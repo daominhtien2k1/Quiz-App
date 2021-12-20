@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="380dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/cv4" />
+
+    <TextView
+        android:id="@+id/quizName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/heebo_medium"
+        android:text="Quiz 1"
+        android:textColor="#d703082b"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/quizNumOfQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 questions"
+        android:textSize="14dp"
+        android:textColor="#6003082b"
+        android:fontFamily="@font/heebo_regular"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        />
+    <TextView
+        android:id="@+id/quizTotalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60 minutes"
+        android:textSize="14dp"
+        android:textColor="#6003082b"
+        android:fontFamily="@font/heebo_regular"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="70dp"
+        />
+
+
+
+</RelativeLayout>
