@@ -5,18 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to Quiz App"
         android:textColor="#2d66dc"
         android:textStyle="bold"
-        android:textSize="35dp"
-        android:layout_marginTop="20dp"/>
+        android:textSize="35dp" />
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
         android:src="@drawable/asset3"
         android:layout_marginTop="40dp"/>
     <TextView
@@ -27,7 +30,7 @@
         android:textStyle="bold"
         android:textSize="35dp"
         android:layout_gravity="start"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -36,9 +39,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:id="@+id/username"
-        android:hint="Username"
+        android:hint="Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etvEmail"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             />
@@ -46,23 +50,38 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:id="@+id/password"
         android:hint="Password"
         app:passwordToggleEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etvPassword"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioButton
+        android:id="@+id/rbtnRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher"
+        android:textSize="16sp"
+        android:paddingLeft="12dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"/>
+
     <Button
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/button"
         android:text="Login"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:textColor="#fff"
-        android:layout_marginTop="20dp" />
+        android:textColor="#fff" />
 </LinearLayout>
