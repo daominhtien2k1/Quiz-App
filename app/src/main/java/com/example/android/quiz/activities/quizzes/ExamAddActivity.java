@@ -22,8 +22,8 @@ public class ExamAddActivity extends AppCompatActivity {
     String quizID,quizName;
     int numOfQuestions,totalTime, currentQuestionCount =1;
     RadioButton rbOption1, rbOption2, rbOption3, rbOption4;
-    EditText totalTimeEditText, questionEditText, option1EditText, option2EditText, option3EditText, option4EditText;
-    TextView currentQuestionView;
+    EditText questionEditText, option1EditText, option2EditText, option3EditText, option4EditText;
+    TextView currentQuestionView, totalTimeTextView;
     Button previous,next;
     ArrayList<Question> questions;
 
@@ -43,7 +43,7 @@ public class ExamAddActivity extends AppCompatActivity {
         initialView();
         //set totalTime(bổ sung vào database) và currentQuestion ban đầu
         currentQuestionView.setText("Question 1 of "+numOfQuestions);
-        totalTimeEditText.setText(String.valueOf(totalTime)+":00");
+        totalTimeTextView.setText(String.valueOf(totalTime)+":00");
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ExamAddActivity extends AppCompatActivity {
     }
 
     private void initialView(){
-        totalTimeEditText = findViewById(R.id.time);
+        totalTimeTextView = findViewById(R.id.time);
         questionEditText = findViewById(R.id.question);
         option1EditText = findViewById(R.id.option1);
         option2EditText = findViewById(R.id.option2);

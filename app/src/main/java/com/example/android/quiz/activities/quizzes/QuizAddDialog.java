@@ -15,7 +15,7 @@ import com.example.android.quiz.R;
 
 //nhập ID bằng tay Q01_CH01_SB01
 public class QuizAddDialog extends DialogFragment{
-    private QuizDialogListener listener;
+    private AddQuizDialogListener listener;
     private EditText quizID ;
     private EditText quizName ;
     private EditText quizNumberOfQuestions;
@@ -41,7 +41,7 @@ public class QuizAddDialog extends DialogFragment{
                         String name = quizName.getText().toString();
                         int numberOfQuestions = Integer.valueOf(quizNumberOfQuestions.getText().toString());
                         int totalTime = Integer.valueOf(quizTotalTime.getText().toString());
-                        listener.save(ID,name,numberOfQuestions,totalTime);
+                        listener.add(ID,name,numberOfQuestions,totalTime);
                     }
                 });
         quizID =(EditText)view.findViewById(R.id.inputQuizID);
@@ -55,16 +55,16 @@ public class QuizAddDialog extends DialogFragment{
         super.onAttach(context);
 
         try {
-            listener = (QuizDialogListener) context;
+            listener = (AddQuizDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
-                    "must implement1 QuizDialogListener");
+                    "must implement1 AddQuizDialogListener");
         }
     }
 
 
 
-    public interface QuizDialogListener {
-        public void save(String id, String name, int numberOfQuestions, int totalTime);
+    public interface AddQuizDialogListener {
+        public void add(String id, String name, int numberOfQuestions, int totalTime);
     }
 }

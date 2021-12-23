@@ -16,7 +16,7 @@ import com.example.android.quiz.R;
 
 //nhập ID bằng tay CH01_SB01
 public class ChapterAddDialog extends DialogFragment{
-    private ChapterDialogListener listener;
+    private AddChapterDialogListener listener;
     private EditText chapterID ;
     private EditText chapterName ;
     private EditText chapterDescription ;
@@ -39,7 +39,7 @@ public class ChapterAddDialog extends DialogFragment{
                         String ID = chapterID.getText().toString();
                         String name = chapterName.getText().toString();
                         String description = chapterDescription.getText().toString();
-                        listener.save(ID,name,description);
+                        listener.add(ID,name,description);
                     }
                 });
         chapterID =(EditText)view.findViewById(R.id.inputChapterID);
@@ -53,16 +53,16 @@ public class ChapterAddDialog extends DialogFragment{
         super.onAttach(context);
 
         try {  Log.v("SUCCESS","uhuh");
-            listener = (ChapterDialogListener) context;
+            listener = (AddChapterDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
-                    "must implement1 ChapterDialogListener");
+                    "must implement1 AddChapterDialogListener");
         }
     }
 
 
 
-    public interface ChapterDialogListener {
-        public void save(String id, String name, String description);
+    public interface AddChapterDialogListener {
+        public void add(String id, String name, String description);
     }
 }

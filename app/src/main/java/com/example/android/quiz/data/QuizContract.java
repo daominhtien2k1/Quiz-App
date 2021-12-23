@@ -24,7 +24,7 @@ public final class QuizContract {
         public static final int CODE_SUBJECT =1;
 
         //Truy vấn đến cột Subject, mã code trả về 2
-        public static final String PATH_SUBJECT_ID="subject/#";
+        public static final String PATH_SUBJECT_ID="subject/*";
         public static final int CODE_SUBJECT_ID =2;
 
         //Uri truy vấn đến bảng Subject: content://com.example.android.quiz/subject
@@ -46,7 +46,7 @@ public final class QuizContract {
         public static final int CODE_CHAPTER =3;
 
         //Truy vấn đến cột Chapter, mã code trả về 4
-        public static final String PATH_CHAPTER_ID="chapter/#";
+        public static final String PATH_CHAPTER_ID="chapter/*";
         public static final int CODE_CHAPTER_ID =4;
 
         //Uri truy vấn đến bảng Chapter: content://com.example.android.quiz/chapter
@@ -73,7 +73,7 @@ public final class QuizContract {
         public static final int CODE_QUIZ =5;
 
         //Truy vấn đến cột Quiz, mã code trả về 6
-        public static final String PATH_QUIZ_ID="quiz/#";
+        public static final String PATH_QUIZ_ID="quiz/*";
         public static final int CODE_QUIZ_ID =6;
 
         //Uri truy vấn đến bảng Quiz: content://com.example.android.quiz/quiz
@@ -114,5 +114,15 @@ public final class QuizContract {
         public static final String COLUMN_QUESTION_DIFFICULTY ="difficulty"; //allow null
         public static final String COLUMN_QUIZ_REFERENCE = "quizID"; //allow null to tạo ngân hàng đề
 
+    }
+
+    //Table User
+    public static final class AccountEntry implements BaseColumns{
+        public static final String TABLE_NAME="user";
+        public static final String COLUMN_ACCOUNT_ID ="userID";
+        public static final String COLUMN_ACCOUNT_NAME ="name";
+        public static final String COLUMN_ACCOUNT_EMAIL ="email";
+        public static final String COLUMN_ACCOUNT_PASSWORD ="password";
+        public static final String COLUMN_ACCOUNT_ROLE ="role";
     }
 }

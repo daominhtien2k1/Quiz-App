@@ -12,23 +12,25 @@
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_add_test.xml" value="0.42857142857142855" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_category.xml" value="0.5714285714285714" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_category_course.xml" value="0.28354978354978355" />
-        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_chapter.xml" value="0.5714285714285714" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_chapter.xml" value="0.2672292545710267" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_create_chapter.xml" value="0.3828571428571429" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_do_exam.xml" value="0.3828571428571429" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_main.xml" value="0.11494252873563218" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_operation_chapter.xml" value="0.5357142857142857" />
-        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.3828571428571429" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.42857142857142855" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_subject.xml" value="0.3828571428571429" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/activity_test.xml" value="0.3828571428571429" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/add_test.xml" value="0.3646833013435701" />
-        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/cardview_item_subject.xml" value="0.15463917525773196" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/cardview_item_subject.xml" value="0.3828571428571429" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/custom_background.xml" value="0.1" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/dialog_add_chapter.xml" value="0.2857142857142857" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/dialog_add_quiz.xml" value="0.3828571428571429" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/dialog_edit_chapter.xml" value="0.5142857142857143" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/dialog_edit_quiz.xml" value="0.42857142857142855" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/example.xml" value="0.18857142857142858" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/instruction_exam.xml" value="0.2702702702702703" />
-        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/item_chapter.xml" value="0.5635062611806798" />
+        <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/item_chapter.xml" value="0.5018115942028986" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/item_quiz.xml" value="0.42857142857142855" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/item_subject.xml" value="0.1" />
         <entry key="..\:/Users/Blackcat/AndroidStudioProjects/Quiz/app/src/main/res/layout/trial.xml" value="0.2585034013605442" />

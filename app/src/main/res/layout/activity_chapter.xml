@@ -39,6 +39,7 @@
             android:background="@drawable/custom_background2">
 
             <ImageView
+                android:id="@+id/searchChapter"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
@@ -47,7 +48,7 @@
                 android:src="@drawable/search_img" />
 
             <EditText
-                android:id="@+id/searchChapter"
+                android:id="@+id/searchChapterText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -122,8 +123,27 @@ selected quiz. The chosen quiz has many questions."
         <ListView
           android:id="@+id/listOfChapters"
           android:layout_width="match_parent"
-          android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="8">
         </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/editChapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginLeft="70dp"/>
+            <Button
+                android:id="@+id/removeChapter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove"
+                android:layout_marginLeft="80dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

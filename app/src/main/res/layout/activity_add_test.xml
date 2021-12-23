@@ -42,7 +42,6 @@
             android:src="@drawable/alarm" />
 
         <TextView
-            android:id="@+id/searchChapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -54,7 +53,7 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -262,7 +261,7 @@
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="120dp"
             android:text="Next"
             android:textSize="18dp" />
     </LinearLayout>
