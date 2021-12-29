@@ -39,6 +39,7 @@
             android:background="@drawable/custom_background2">
 
             <ImageView
+                android:id="@+id/export"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"

@@ -1,16 +1,21 @@
 package com.example.android.quiz.activities.quizzes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +29,28 @@ import com.example.android.quiz.activities.chapters.ChapterActivity;
 import com.example.android.quiz.activities.chapters.ChapterEditDialog;
 import com.example.android.quiz.data.QuizContract;
 import com.example.android.quiz.model.ListViewCursorAdapterQuiz;
+import com.example.android.quiz.model.Question;
 import com.example.android.quiz.model.Quiz;
+import com.example.android.quiz.model.Subject;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.IndexedColorMap;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 //dùng listview + cursor adapter
 public class QuizActivity extends AppCompatActivity implements QuizAddDialog.AddQuizDialogListener, QuizEditDialog.EditQuizDialogListener {
@@ -33,11 +59,16 @@ public class QuizActivity extends AppCompatActivity implements QuizAddDialog.Add
     ListViewCursorAdapterQuiz adapterQuiz;
     ListView listQuiz;
     Cursor cursor;
+    String quizID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        System.setProperty("org.apache.poi.javax.xml.stream.XMLInputFactory", "com.fasterxml.aalto.stax.InputFactoryImpl");
+        System.setProperty("org.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
+        System.setProperty("org.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
 
         //nhận đúng chapterID và chapterName để tạo đúng quiz trên subject đó
         Intent intent = getIntent();
@@ -128,6 +159,31 @@ public class QuizActivity extends AppCompatActivity implements QuizAddDialog.Add
             }
         });
 
+
+        ImageView exportExcel = (ImageView) findViewById(R.id.exportExcel);
+        exportExcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //đổi background sang xanh. //set lại onclick item
+                for (int i = 0; i < listQuiz.getChildCount(); i++) {
+                    View listItem = listQuiz.getChildAt(i);
+                    ImageView background = (ImageView) listItem.findViewById(R.id.backgroundQuiz);
+                    ColorDrawable viewColor  = (ColorDrawable) background.getBackground();
+                    int colorID= viewColor.getColor();
+                    //ấn button Remove để vào chế độ Remove. Màu background chuyển sang màu đỏ
+                    if(colorID!=Color.parseColor("#88D969")) {
+                        background.setBackgroundColor(Color.parseColor("#88D969"));
+                        clickToExportExcel();
+                    }
+                    //ấn button Remove lần nữa để quay trở lại trạng thái ban đầu (không ở chế độ Remove). lúc này background chuyển sang màu xanh
+                    else {
+                        background.setBackgroundColor(Color.parseColor("#55A4F1"));
+                        //set lại onClick trên mỗi item về mặc định, điều hướng đến activity quiz. Cursor không có gì thay đổi
+                        clickToOpenQuestions();
+                    }
+                }
+            }
+        });
     }
 
 
@@ -288,5 +344,172 @@ public class QuizActivity extends AppCompatActivity implements QuizAddDialog.Add
 
         adapterQuiz = new ListViewCursorAdapterQuiz(this, cursor);
         listQuiz.setAdapter(adapterQuiz);
+    }
+
+    public void clickToExportExcel(){
+        listQuiz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                cursor.moveToPosition(position);
+                int IDCollumnIndex = cursor.getColumnIndex(QuizContract._ID);
+                quizID=cursor.getString(IDCollumnIndex);
+                new AlertDialog.Builder(QuizActivity.this).setTitle("Export excel").setMessage("Do you want to export this quiz?")
+                        .setNegativeButton("No",null).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                            if (getApplicationContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                requestPermissions(permissions, 1);
+                            } else {
+                                exportData();
+                            }
+                        } else {
+                            exportData();
+                        }
+                    }
+                }).show();
+            }
+        });
+    }
+
+    public void exportData(){
+        createXlFile();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode,permissions, grantResults);
+        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            exportData();
+        } else {
+            Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void createXlFile() {
+        ArrayList<Question> questions = new ArrayList<Question>();
+        String[] projectionQuestion = {QuizContract.QuestionEntry.COLUMN_QUESTION_ID + " AS " +QuizContract._ID , QuizContract.QuestionEntry.COLUMN_QUESTION_QUESTION , QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION1, QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION2, QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION3, QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION4, QuizContract.QuestionEntry.COLUMN_QUESTION_ANSWER, QuizContract.QuestionEntry.COLUMN_QUESTION_DIFFICULTY};
+        String selectionQuestion = QuizContract.QuestionEntry.COLUMN_QUIZ_REFERENCE + "=?";
+        String[] selectionArgsQuestion = {quizID} ;
+        Cursor cursor = getContentResolver().query(QuizContract.QuestionEntry.CONTENT_URI_QUESTION, projectionQuestion, selectionQuestion, selectionArgsQuestion, null);
+        while (cursor.moveToNext()) {
+            int IDCollumnIndex = cursor.getColumnIndex(QuizContract._ID);
+            int questionCollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_QUESTION);
+            int option1CollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION1);
+            int option2CollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION2);
+            int option3CollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION3);
+            int option4CollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION4);
+            int answerCollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_ANSWER);
+            int difficultyCollumnIndex = cursor.getColumnIndex(QuizContract.QuestionEntry.COLUMN_QUESTION_DIFFICULTY);
+
+            int ID = cursor.getInt(IDCollumnIndex);
+            String question = cursor.getString(questionCollumnIndex);
+            String option1 = cursor.getString(option1CollumnIndex);
+            String option2 = cursor.getString(option2CollumnIndex);
+            String option3 = cursor.getString(option3CollumnIndex);
+            String option4 = cursor.getString(option4CollumnIndex);
+            String answer = cursor.getString(answerCollumnIndex);
+            String difficulty = cursor.getString(difficultyCollumnIndex);
+            Question tempQuestion;
+            tempQuestion = new Question(ID,question,option1,option2,option3,option4,answer,difficulty);
+            questions.add(tempQuestion);
+
+        }
+
+        // File filePath = new File(Environment.getExternalStorageDirectory() + "/Demo.xls");
+        Workbook wb = new HSSFWorkbook();
+        Cell cell = null;
+        Sheet sheet = null;
+        sheet = wb.createSheet("Demo Excel Sheet");
+        //Now column and row
+        Row row = sheet.createRow(0);
+        cell = row.createCell(0);
+        cell.setCellValue("Question ID");
+
+        cell = row.createCell(1);
+        cell.setCellValue("Question");
+
+        cell = row.createCell(2);
+        cell.setCellValue("Option 1");
+
+        cell = row.createCell(3);
+        cell.setCellValue("Option 2");
+
+        cell = row.createCell(4);
+        cell.setCellValue("Option 3");
+
+        cell = row.createCell(5);
+        cell.setCellValue("Option 4");
+
+        //column width
+        sheet.setColumnWidth(0, (30 * 200));
+        sheet.setColumnWidth(1, (30 * 200));
+        sheet.setColumnWidth(2, (30 * 200));
+        sheet.setColumnWidth(3, (30 * 200));
+        sheet.setColumnWidth(4, (30 * 200));
+        sheet.setColumnWidth(5, (30 * 200));
+
+
+        for (int i = 0; i < questions.size(); i++) {
+            Row row1 = sheet.createRow(i + 1);
+
+            cell = row1.createCell(0);
+            cell.setCellValue(questions.get(i).getQuestionID());
+
+            cell = row1.createCell(1);
+            cell.setCellValue(questions.get(i).getQuestion());
+            //  cell.setCellStyle(cellStyle);
+
+            cell = row1.createCell(2);
+            cell.setCellValue(questions.get(i).getOption1());
+
+            cell = row1.createCell(3);
+            cell.setCellValue(questions.get(i).getOption2());
+
+            cell = row1.createCell(4);
+            cell.setCellValue(questions.get(i).getOption3());
+
+            cell = row1.createCell(5);
+            cell.setCellValue(questions.get(i).getOption4());
+
+
+            sheet.setColumnWidth(0, (30 * 200));
+            sheet.setColumnWidth(1, (30 * 200));
+            sheet.setColumnWidth(2, (30 * 200));
+            sheet.setColumnWidth(3, (30 * 200));
+            sheet.setColumnWidth(4, (30 * 200));
+            sheet.setColumnWidth(5, (30 * 200));
+
+        }
+        String folderName = "Export Excel";
+        String fileName = folderName + System.currentTimeMillis() + ".xls";
+        String path = Environment.getExternalStorageDirectory() + File.separator + folderName + File.separator + fileName;
+
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + folderName);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        FileOutputStream outputStream = null;
+
+        try {
+            outputStream = new FileOutputStream(path);
+            wb.write(outputStream);
+            // ShareViaEmail(file.getParentFile().getName(),file.getName());
+            Toast.makeText(getApplicationContext(), "Excel Created in " + path, Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            Toast.makeText(getApplicationContext(), "Not OK", Toast.LENGTH_LONG).show();
+            try {
+                outputStream.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+            }
+        }
+
+
     }
 }

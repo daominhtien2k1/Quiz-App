@@ -97,7 +97,7 @@ public final class QuizContract {
         public static final int CODE_QUESTION =7;
 
         //Truy vấn đến cột Question, mã code trả về 8
-        public static final String PATH_QUESTION_ID="question/#";
+        public static final String PATH_QUESTION_ID="question/*";
         public static final int CODE_QUESTION_ID =8;
 
         //Uri truy vấn đến bảng Question: content://com.example.android.quiz/question

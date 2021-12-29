@@ -11,6 +11,27 @@ public class Question {
     private String difficulty;
     private String quizID;
 
+    public Question(int questionID, String question, String option1, String option2, String option3, String option4, String answer, String difficulty) {
+        this.questionID = questionID;
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
+        this.difficulty = difficulty;
+    }
+
+    public Question(String question, String option1, String option2, String option3, String option4, String answer, String difficulty) {
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
+        this.difficulty = difficulty;
+    }
+
     public Question(String question, String option1, String option2, String option3, String option4, String answer) {
         this.question = question;
         this.option1 = option1;

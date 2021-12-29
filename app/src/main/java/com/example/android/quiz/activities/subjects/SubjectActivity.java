@@ -1,14 +1,22 @@
 package com.example.android.quiz.activities.subjects;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.android.quiz.R;
 import com.example.android.quiz.activities.chapters.ChapterActivity;
@@ -16,7 +24,11 @@ import com.example.android.quiz.data.QuizContract;
 import com.example.android.quiz.model.RecyclerViewAdapterSubject;
 import com.example.android.quiz.model.Subject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+
 
 //dùng recyclerview + cardview
 public class SubjectActivity extends AppCompatActivity implements RecyclerViewAdapterSubject.ItemClickListener {
@@ -85,4 +97,5 @@ public class SubjectActivity extends AppCompatActivity implements RecyclerViewAd
         intent.putExtra("SubjectName", subjectName);
         startActivity(intent);
     }
+
 }

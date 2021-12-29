@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 //        ContentValues tempValues = new ContentValues();
 //        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ID,1);
 //        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME,"tien");
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"minhtienk64hust@gmail.com");
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"minhtien");
 //        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD,"hello");
 //        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE,"Teacher");
 //        sqLiteDatabaseObj.insert(QuizContract.AccountEntry.TABLE_NAME,null,tempValues);
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
             // Going to Dashboard activity after login success message.
 
-            Intent intent = new Intent(LoginActivity.this, SubjectActivity.class);
+            Intent intent = new Intent(LoginActivity.this, CategoryActivity.class);
             // Sending Email to Dashboard Activity using intent.
             intent.putExtra(UserEmail, EmailHolder);
             startActivity(intent);

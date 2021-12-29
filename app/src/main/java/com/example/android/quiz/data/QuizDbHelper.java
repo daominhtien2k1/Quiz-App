@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "quiz.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String CREATE_TABLE_SUBJECT = "CREATE TABLE " + QuizContract.SubjectEntry.TABLE_NAME + "("
             + QuizContract.SubjectEntry.COLUMN_SUBJECT_ID + " TEXT PRIMARY KEY, " + QuizContract.SubjectEntry.COLUMN_SUBJECT_NAME
             + " TEXT NOT NULL, " + QuizContract.SubjectEntry.COLUMN_SUBJECT_DESCRIPTION + " TEXT NOT NULL, " + QuizContract.SubjectEntry.COLUMN_SUBJECT_CREATAT
@@ -31,7 +31,8 @@ public class QuizDbHelper extends SQLiteOpenHelper {
             +QuizContract.QuestionEntry.COLUMN_QUESTION_DIFFICULTY + " TEXT, "+ QuizContract.QuestionEntry.COLUMN_QUIZ_REFERENCE + " TEXT, "
             + "FOREIGN KEY (" + QuizContract.QuestionEntry.COLUMN_QUIZ_REFERENCE + ") REFERENCES " + QuizContract.QuizEntry.TABLE_NAME + " (" +QuizContract.QuizEntry.COLUMN_QUIZ_ID +"));";
 
-    private static String CREATE_TABLE_USER="CREATE TABLE "+QuizContract.AccountEntry.TABLE_NAME+ "("+QuizContract.AccountEntry.COLUMN_ACCOUNT_ID +" INTEGER PRIMARY KEY, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE +" VARCHAR"+")";
+    private static final String CREATE_TABLE_USER = "CREATE TABLE "+QuizContract.AccountEntry.TABLE_NAME+ "("+QuizContract.AccountEntry.COLUMN_ACCOUNT_ID +" INTEGER PRIMARY KEY, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME
+            +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE +" VARCHAR"+")";
 
 
     public QuizDbHelper(Context context) {
@@ -45,11 +46,12 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CHAPTER);
         db.execSQL(CREATE_TABLE_QUIZ);
         db.execSQL(CREATE_TABLE_QUESTION);
+        db.execSQL(CREATE_TABLE_USER);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(CREATE_TABLE_USER);
+
     }
 }

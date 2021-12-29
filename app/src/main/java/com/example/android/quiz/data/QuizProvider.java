@@ -14,6 +14,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.android.quiz.model.Quiz;
+
 public class QuizProvider extends ContentProvider {
     private QuizDbHelper quizDbHelper;
 
@@ -99,6 +101,11 @@ public class QuizProvider extends ContentProvider {
                 selectionArgs = new String[] { uri.getLastPathSegment() };
                 rowsUpdated=database.update(QuizContract.QuizEntry.TABLE_NAME,values,selection,selectionArgs);
                 break;
+            case QuizContract.QuestionEntry.CODE_QUESTION_ID:
+                selection = QuizContract.QuestionEntry.COLUMN_QUESTION_ID + "=?";
+                selectionArgs = new String[] { uri.getLastPathSegment() };
+                rowsUpdated=database.update(QuizContract.QuestionEntry.TABLE_NAME,values,selection,selectionArgs);
+                break;
             default:
                 throw new IllegalArgumentException("Cannot update unknown URI " + uri);
         }
@@ -121,6 +128,11 @@ public class QuizProvider extends ContentProvider {
                 selection =  QuizContract.QuizEntry.COLUMN_QUIZ_ID + "=?";
                 selectionArgs = new String[] { uri.getLastPathSegment() };
                 rowsDeleted=database.delete(QuizContract.QuizEntry.TABLE_NAME,selection,selectionArgs);
+                break;
+            case QuizContract.QuestionEntry.CODE_QUESTION_ID:
+                selection = QuizContract.QuestionEntry.COLUMN_QUESTION_ID + "=?";
+                selectionArgs = new String[] { uri.getLastPathSegment() };
+                rowsDeleted=database.delete(QuizContract.QuestionEntry.TABLE_NAME,selection,selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Cannot delete unknown URI " + uri);
