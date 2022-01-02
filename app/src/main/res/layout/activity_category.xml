@@ -11,16 +11,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_background"
-        >
+        android:background="@drawable/custom_background">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/arrow_left"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_left" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,35 +30,38 @@
                 android:gravity="center"
                 android:text="Category"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="24dp" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello,"
-            android:fontFamily="@font/heebo_medium"
-            android:textColor="#fff"
-            android:textSize="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="25dp" />
+            android:fontFamily="@font/heebo_medium"
+            android:text="Hello,"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/hello"
 
+            android:layout_marginLeft="25dp"
             android:fontFamily="@font/heebo_medium"
-            android:text="Dao Minh Tien"
 
+            android:text="Dao Minh Tien"
             android:textColor="#fff"
             android:textSize="26dp"
-            android:textStyle="bold"
-            android:layout_marginLeft="25dp"/>
+            android:textStyle="bold" />
+
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="30dp"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
             android:background="@drawable/male_student" />
 
         <RelativeLayout
@@ -78,8 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="55dp"
-                android:text="Search"
                 android:fontFamily="@font/heebo_regular"
+                android:text="Search"
                 android:textColor="#fff"
                 android:textSize="18dp" />
 
@@ -94,34 +99,54 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/block1"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/subject_icon_5"
+            android:paddingTop="10dp"
+            android:scaleType="centerCrop"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="23dp"
-            android:text="Subjects list (3)"
-            android:textColor="#673AB7"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/heebo_regular"
+            android:gravity="center"
+            android:text="Select this block to navigate Subject"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            android:textStyle="italic"></TextView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/block2"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/question_bank"
+            android:paddingTop="10dp"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:text="Test for database"/>
-
-
-
-        </LinearLayout>
-    </RelativeLayout>
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/heebo_regular"
+            android:gravity="center"
+            android:text="Select this block to navigate question bank"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            android:textStyle="italic"></TextView>
+    </LinearLayout>
 
 </LinearLayout>

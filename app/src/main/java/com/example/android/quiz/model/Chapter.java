@@ -55,4 +55,8 @@ public class Chapter {
     public void setSubjectID(String subjectID) {
         this.subjectID = subjectID;
     }
+
+    public String toString() {
+        return name;
+    }
 }

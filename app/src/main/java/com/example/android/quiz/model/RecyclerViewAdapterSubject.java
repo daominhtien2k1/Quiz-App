@@ -1,23 +1,18 @@
 package com.example.android.quiz.model;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.quiz.R;
-import com.example.android.quiz.activities.chapters.ChapterActivity;
 import com.example.android.quiz.data.QuizContract;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-  >
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/heebo_medium"
                 android:gravity="center"
-                android:text="Chapter"
+                android:text="Question bank"
                 android:textColor="#fff"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -39,7 +39,7 @@
             android:background="@drawable/custom_background2">
 
             <ImageView
-                android:id="@+id/searchChapter"
+                android:id="@+id/searchQuestion"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
@@ -48,7 +48,7 @@
                 android:src="@drawable/search_img" />
 
             <EditText
-                android:id="@+id/searchChapterText"
+                android:id="@+id/searchQuestionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -60,7 +60,7 @@
                 android:textSize="16dp" />
 
             <ImageView
-                android:id="@+id/createChapter"
+                android:id="@+id/createQuestion"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
@@ -71,37 +71,7 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/custom_background3"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
 
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select chapter to navigate"
-            android:fontFamily="@font/heebo_regular"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Teachers and students select one of the below chapters to navigate to the
-selected quiz. The chosen quiz has many questions."
-            android:fontFamily="@font/heebo_regular"
-            android:textColor="#CC000000"
-            android:textSize="16dp"
-            />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -109,36 +79,37 @@ selected quiz. The chosen quiz has many questions."
         android:background="@drawable/custom_background3"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose chapter"
+            android:text="Set of example questions"
             android:fontFamily="@font/heebo_regular"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="20dp"
-           />
+            />
 
         <ListView
-          android:id="@+id/listOfChapters"
-          android:layout_width="match_parent"
+            android:id="@+id/listOfQuestions"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8">
         </ListView>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/editChapter"
+                android:id="@+id/editQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit"
                 android:layout_marginLeft="70dp"/>
             <Button
-                android:id="@+id/removeChapter"
+                android:id="@+id/removeQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Remove"

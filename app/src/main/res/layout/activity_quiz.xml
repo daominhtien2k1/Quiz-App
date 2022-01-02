@@ -39,6 +39,7 @@
             android:background="@drawable/custom_background2">
 
             <ImageView
+                android:id="@+id/searchQuiz"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
@@ -47,14 +48,14 @@
                 android:src="@drawable/search_img" />
 
             <EditText
-                android:id="@+id/searchQuiz"
+                android:id="@+id/searchQuizText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="55dp"
                 android:layout_marginRight="40dp"
                 android:fontFamily="@font/heebo_regular"
-                android:text="Search"
+                android:hint="Search"
                 android:textColor="#fff"
                 android:textSize="16dp" />
 
@@ -81,15 +82,27 @@
         android:layout_marginTop="10dp"
 
         >
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select quiz to take part in"
-            android:fontFamily="@font/heebo_regular"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select quiz to take part in"
+                android:fontFamily="@font/heebo_regular"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                />
+            <ImageView
+                android:id="@+id/exportExcel"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="170dp"
+                android:src="@drawable/excel" />
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,8 +140,27 @@ selected quiz. The chosen quiz has many questions and limited time."
         <ListView
             android:id="@+id/listOfQuizzes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="8">
         </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/editQuiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginLeft="70dp"/>
+            <Button
+                android:id="@+id/removeQuiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove"
+                android:layout_marginLeft="80dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

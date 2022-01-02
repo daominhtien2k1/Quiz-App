@@ -16,7 +16,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.android.quiz.R;
-import com.example.android.quiz.data.AccountHelper;
+import com.example.android.quiz.activities.subjects.SubjectActivity;
+import com.example.android.quiz.data.QuizContract;
+import com.example.android.quiz.data.QuizDbHelper;
 
 public class LoginActivity extends AppCompatActivity {
     Button LogInButton;
@@ -24,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     String EmailHolder, PasswordHolder;
     Boolean EditTextEmptyHolder;
     SQLiteDatabase sqLiteDatabaseObj;
-    AccountHelper accountHelper;
+    QuizDbHelper quizDbHelper;
     Cursor cursor;
     String TempPassword = "NOT_FOUND";
     RadioButton isTeacherButton;
@@ -35,13 +37,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         LogInButton = (Button)findViewById(R.id.btnLogin);
 
         Email = (EditText)findViewById(R.id.etvEmail);
         Password = (EditText)findViewById(R.id.etvPassword);
         isTeacherButton = (RadioButton)findViewById(R.id.rbtnRole);
 
-        accountHelper = new AccountHelper(this);
+        quizDbHelper = new QuizDbHelper(this);
+
+//        sqLiteDatabaseObj = quizDbHelper.getWritableDatabase();
+//        ContentValues tempValues = new ContentValues();
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ID,1);
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME,"tien");
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"minhtien");
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD,"hello");
+//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE,"Teacher");
+//        sqLiteDatabaseObj.insert(QuizContract.AccountEntry.TABLE_NAME,null,tempValues);
 
         //Adding click listener to log in button.
         LogInButton.setOnClickListener(new View.OnClickListener() {
@@ -59,15 +72,15 @@ public class LoginActivity extends AppCompatActivity {
     public void LoginFunction(){
         if(EditTextEmptyHolder) {
             // Opening SQLite database write permission.
-            sqLiteDatabaseObj = accountHelper.getWritableDatabase();
+            sqLiteDatabaseObj = quizDbHelper.getWritableDatabase();
 
             // Adding search email query to cursor.
-            cursor = sqLiteDatabaseObj.query(AccountHelper.TABLE_NAME, null, " " + AccountHelper.Table_Column_Email + "=?", new String[]{EmailHolder}, null, null, null);
+            cursor = sqLiteDatabaseObj.query(QuizContract.AccountEntry.TABLE_NAME, null, " " + QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL+ "=?", new String[]{EmailHolder}, null, null, null);
             while (cursor.moveToNext()) {
                 if (cursor.isFirst()) {
                     cursor.moveToFirst();
                     // Storing Password associated with entered email.
-                    TempPassword = cursor.getString(cursor.getColumnIndex(AccountHelper.Table_Column_Password));
+                    TempPassword = cursor.getString(cursor.getColumnIndex(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD));
                     // Closing cursor.
                     cursor.close();
                 }

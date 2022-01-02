@@ -7,7 +7,14 @@ public class Subject {
     private String createAt;
     private String modifyAt;
     private int image;
-    public Subject(String subjectID, String name, String description,int image){
+
+    public Subject(String subjectID, String name, String description) {
+        this.subjectID = subjectID;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Subject(String subjectID, String name, String description, int image){
         this.subjectID=subjectID;
         this.name=name;
         this.description=description;

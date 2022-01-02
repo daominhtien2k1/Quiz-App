@@ -3,7 +3,6 @@ package com.example.android.quiz.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "quiz.db";
@@ -31,6 +30,11 @@ public class QuizDbHelper extends SQLiteOpenHelper {
             + QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION3 + " TEXT NOT NULL, " + QuizContract.QuestionEntry.COLUMN_QUESTION_OPTION4 + " TEXT NOT NULL, " + QuizContract.QuestionEntry.COLUMN_QUESTION_ANSWER + " TEXT NOT NULL, "
             +QuizContract.QuestionEntry.COLUMN_QUESTION_DIFFICULTY + " TEXT, "+ QuizContract.QuestionEntry.COLUMN_QUIZ_REFERENCE + " TEXT, "
             + "FOREIGN KEY (" + QuizContract.QuestionEntry.COLUMN_QUIZ_REFERENCE + ") REFERENCES " + QuizContract.QuizEntry.TABLE_NAME + " (" +QuizContract.QuizEntry.COLUMN_QUIZ_ID +"));";
+
+    private static final String CREATE_TABLE_USER = "CREATE TABLE "+QuizContract.AccountEntry.TABLE_NAME+ "("+QuizContract.AccountEntry.COLUMN_ACCOUNT_ID +" INTEGER PRIMARY KEY, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME
+            +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD +" VARCHAR, "+QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE +" VARCHAR"+")";
+
+
     public QuizDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -42,6 +46,8 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CHAPTER);
         db.execSQL(CREATE_TABLE_QUIZ);
         db.execSQL(CREATE_TABLE_QUESTION);
+        db.execSQL(CREATE_TABLE_USER);
+
     }
 
     @Override

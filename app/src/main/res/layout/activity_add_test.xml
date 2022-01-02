@@ -42,7 +42,6 @@
             android:src="@drawable/alarm" />
 
         <TextView
-            android:id="@+id/searchChapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -54,7 +53,7 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,24 +79,44 @@
         android:text="Question 1 of 10"
         android:textSize="20dp"
         android:textStyle="bold" />
-        <RadioGroup
-            android:layout_width="30dp"
-            android:layout_height="20dp">
-            <RadioButton
-                android:layout_width="wrap_content"
+
+        <ImageView
+            android:id="@+id/importQuestion"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="8dp"
+            android:layout_toRightOf="@id/currentQuestion"
+            android:layout_marginLeft="250dp"
+            android:src="@drawable/add" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/drop"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Select difficulty">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_complete_txt"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-        </RadioGroup>
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="15dp"
-        android:layout_weight="6"
+
         app:cardBackgroundColor="@color/purple_200"
         app:cardCornerRadius="4dp"
         app:cardElevation="5dp">
@@ -127,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="25dp"
                     android:orientation="horizontal">
 
@@ -155,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="25dp"
                     android:orientation="horizontal">
 
@@ -183,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="25dp"
                     android:orientation="horizontal">
 
@@ -211,9 +230,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="25dp"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginBottom="35dp"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -245,7 +264,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="25dp"
         android:orientation="horizontal">
@@ -262,7 +281,7 @@
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="120dp"
             android:text="Next"
             android:textSize="18dp" />
     </LinearLayout>
