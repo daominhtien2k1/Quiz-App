@@ -12,18 +12,20 @@
         android:background="@drawable/custom_background">
 
         <ImageView
+            android:id="@+id/btn_back_from_exam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:src="@drawable/arrow_left" />
 
         <TextView
+            android:id="@+id/tv_exam_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/heebo_medium"
             android:gravity="center"
-            android:text="Create Test"
+            android:text="Quiz Name"
             android:textColor="#fff"
             android:textSize="24dp" />
     </LinearLayout>
@@ -53,8 +55,8 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/time"
+        <TextView
+            android:id="@+id/tv_time_todo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -85,7 +87,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="15dp"
         android:layout_weight="6"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="4dp"
         app:cardElevation="5dp">
 
@@ -94,163 +96,101 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/heebo_regular"
                 android:hint="Question"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <RadioGroup
+            <LinearLayout
+                android:id="@+id/options_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginRight="25dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/options_btn_bg"
+                    android:backgroundTint="#2133A0"
+                    android:fontFamily="@font/heebo_medium"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbOption1"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        />
-
-                    <EditText
-                        android:id="@+id/option1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/heebo_regular"
-                        android:hint="Option 1"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:textStyle="italic" />
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="25dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/options_btn_bg"
+                    android:backgroundTint="#2133A0"
+                    android:fontFamily="@font/heebo_medium"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbOption2"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        />
-
-                    <EditText
-                        android:id="@+id/option2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/heebo_regular"
-                        android:hint="Option 2"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:textStyle="italic" />
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="25dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/options_btn_bg"
+                    android:backgroundTint="#2133A0"
+                    android:fontFamily="@font/heebo_medium"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbOption3"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        />
-
-                    <EditText
-                        android:id="@+id/option3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/heebo_regular"
-                        android:hint="Option 3"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:textStyle="italic" />
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="25dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/options_btn_bg"
+                    android:backgroundTint="#2133A0"
+                    android:fontFamily="@font/heebo_medium"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbOption4"
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        />
-
-                    <EditText
-                        android:id="@+id/option4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:fontFamily="@font/heebo_regular"
-                        android:hint="Option 4"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:textStyle="italic" />
-                </LinearLayout>
-            </RadioGroup>
+            </LinearLayout>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="25dp"
-        android:orientation="horizontal">
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="25dp">
 
         <Button
-            android:id="@+id/previous"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_previous"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
             android:text="Prev"
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_next"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_alignParentEnd="true"
             android:text="Next"
             android:textSize="18dp" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

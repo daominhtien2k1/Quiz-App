@@ -12,6 +12,7 @@
         android:background="@drawable/custom_background">
 
         <ImageView
+            android:id="@+id/iv_back_from_instruction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -53,15 +54,15 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/time"
+        <TextView
+            android:id="@+id/tv_total_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
             android:fontFamily="@font/heebo_medium"
-            android:text="60:00"
+            android:text="10:10"
             android:textSize="20dp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -73,7 +74,6 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="15dp"
-        app:cardBackgroundColor="@color/purple_200"
         app:cardCornerRadius="4dp"
         app:cardElevation="5dp">
 
@@ -97,13 +97,14 @@
     </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/next"
+            android:id="@+id/btn_startExam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
             android:layout_marginTop="30dp"
             android:text="Start exam"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:background="@drawable/custom_background2" />
 
 </LinearLayout>

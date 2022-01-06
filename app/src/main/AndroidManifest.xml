@@ -11,35 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quiz">
-        <activity
-            android:name=".activities.quizzes.QuestionBankActivity">
-
-        </activity>
-        <activity
-            android:name=".activities.quizzes.DoExamAcitivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.quizzes.ExamAddActivity">
-
-        </activity>
-        <activity android:name=".activities.quizzes.QuizActivity"></activity>
-        <activity android:name=".activities.subjects.SubjectActivity">
-
-        </activity>
+        <activity android:name=".activities.quizzes.QuestionBankActivity" />
+        <activity android:name=".activities.quizzes.DoExamAcitivity" android:exported="false" />
+        <activity android:name=".activities.quizzes.ExamAddActivity" />
+        <activity android:name=".activities.quizzes.QuizActivity"/>
+        <activity android:name=".activities.subjects.SubjectActivity"/>
         <activity android:name=".activities.chapters.ChapterActivity" />
-        <activity android:name=".activities.CategoryActivity" >
-
-        </activity>
+        <activity android:name=".activities.CategoryActivity" />
+        <activity android:name=".activities.student.HomeScreen"/>
+        <activity android:name=".activities.student.DisplayChapter"/>
+        <activity android:name=".activities.student.DisplayQuiz"/>
+        <activity android:name=".activities.student.ShowExam.ShowExam"/>
         <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            />
-
         <provider
             android:name=".data.QuizProvider"
             android:authorities="com.example.android.quiz"

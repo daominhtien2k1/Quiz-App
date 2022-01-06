@@ -84,7 +84,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="55dp"
                 android:fontFamily="@font/heebo_regular"
-                android:text="Search"
+                android:hint="Search"
+                android:textColorHint="@color/white"
                 android:textColor="#fff"
                 android:textSize="18dp" />
 

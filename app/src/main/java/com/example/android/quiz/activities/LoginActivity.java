@@ -16,7 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.android.quiz.R;
-import com.example.android.quiz.activities.subjects.SubjectActivity;
+import com.example.android.quiz.activities.student.HomeScreen;
 import com.example.android.quiz.data.QuizContract;
 import com.example.android.quiz.data.QuizDbHelper;
 
@@ -37,8 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         LogInButton = (Button)findViewById(R.id.btnLogin);
 
         Email = (EditText)findViewById(R.id.etvEmail);
@@ -47,14 +45,22 @@ public class LoginActivity extends AppCompatActivity {
 
         quizDbHelper = new QuizDbHelper(this);
 
-//        sqLiteDatabaseObj = quizDbHelper.getWritableDatabase();
-//        ContentValues tempValues = new ContentValues();
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ID,1);
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME,"tien");
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"minhtien");
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD,"hello");
-//        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE,"Teacher");
-//        sqLiteDatabaseObj.insert(QuizContract.AccountEntry.TABLE_NAME,null,tempValues);
+        sqLiteDatabaseObj = quizDbHelper.getWritableDatabase();
+        ContentValues tempValues = new ContentValues();
+        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ID,1);
+        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME,"tien");
+        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"minhtien");
+        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD,"hello");
+        tempValues.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE,"Teacher");
+        sqLiteDatabaseObj.insert(QuizContract.AccountEntry.TABLE_NAME,null,tempValues);
+
+        ContentValues std = new ContentValues();
+        std.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ID,2);
+        std.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_NAME,"anhlp");
+        std.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_EMAIL,"anhlp@gmail.com");
+        std.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_PASSWORD,"123456");
+        std.put(QuizContract.AccountEntry.COLUMN_ACCOUNT_ROLE,"Student");
+        sqLiteDatabaseObj.insert(QuizContract.AccountEntry.TABLE_NAME,null, std);
 
         //Adding click listener to log in button.
         LogInButton.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +130,15 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
             // Going to Dashboard activity after login success message.
 
-            Intent intent = new Intent(LoginActivity.this, CategoryActivity.class);
-            // Sending Email to Dashboard Activity using intent.
-            intent.putExtra(UserEmail, EmailHolder);
-            startActivity(intent);
+            if(isTeacherButton.isChecked()){
+                Intent intent = new Intent(LoginActivity.this, CategoryActivity.class);
+                intent.putExtra(UserEmail, EmailHolder);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(LoginActivity.this, HomeScreen.class);
+                intent.putExtra(UserEmail, EmailHolder);
+                startActivity(intent);
+            }
         }
         else {
             Toast.makeText(LoginActivity.this,"UserName or Password is Wrong, Please Try Again.",Toast.LENGTH_LONG).show();
