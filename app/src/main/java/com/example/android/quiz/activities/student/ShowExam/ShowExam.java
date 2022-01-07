@@ -44,7 +44,6 @@ public class ShowExam extends AppCompatActivity {
         txtQuestions = findViewById(R.id.tv_question);
         currQuestion = findViewById(R.id.currentQuestion);
         Next_btn = findViewById(R.id.btn_next);
-        Close_dialog_btn = findViewById(R.id.ibtn_close);
         Back_from_exam = findViewById(R.id.btn_back_from_exam);
         examName = findViewById(R.id.tv_exam_name);
 
@@ -95,14 +94,6 @@ public class ShowExam extends AppCompatActivity {
                 }
                 count = 0;
                 playAnim(txtQuestions, 0, questionList.get(position).getQuestion());
-            }
-        });
-
-        Close_dialog_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ShowExam.this, DisplayQuiz.class);
-                startActivity(intent);
             }
         });
 
